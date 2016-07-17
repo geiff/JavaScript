@@ -1,0 +1,22 @@
+<!--Write a JavaScript function that accepts a number variable to convert from km/h to knots (knot is a maritime unit measuring speed).
+ The result should be printed on the console, rounded up to the second sign after the decimal point. Run the program through Node.js. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculate knots</title>
+</head>
+<body>
+<div id="knot"></div>
+<script>
+    function knots(arr) {
+        let knots = Number(arr[0]);
+        let result = knots * 0.5399568034557235
+        console.log(result.toFixed(2));
+        //document.getElementById("knot").innerHTML = a;
+    }
+
+    knots(['400']);
+</script>
+</body>
+</html>

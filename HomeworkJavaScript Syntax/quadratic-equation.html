@@ -1,0 +1,36 @@
+<!--Write a script that enters the coefficients a, b and c of a quadratic equation a*x2 + b*x + c = 0
+and calculates and prints its real roots. Note that quadratic equations may have 0, 1 or 2 real roots. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quadratic equation</title>
+</head>
+<body>
+<div id="equ">
+
+</div>
+<script>
+    function equation() {
+        let a = parseInt(prompt("Enter a"));
+        let b = parseInt(prompt("Enter b"));
+        let c = parseInt(prompt("Enter c"))
+
+        let d = b * b - 4 * a * c;
+        if(d < 0){
+            document.getElementById("equ").innerText = "No real rots";
+        } else {
+            if(d===0){
+                document.getElementById("equ").innerText = "x = " + -b/(2*a);
+            } else {
+                document.getElementById("equ").innerText = "X1 = " + (-b + Math.sqrt(d))/(2 * a) + " and " +
+                        "X2 = " + (-b - Math.sqrt(d))/(2 * a);
+            }
+        }
+    }
+
+    equation();
+
+</script>
+</body>
+</html>
