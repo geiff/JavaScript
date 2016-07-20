@@ -1,0 +1,99 @@
+<!--Problem 4.	* Course grade scaling
+You are given a JSON string containing an array of Students (Objects).
+Your task is to scale their scores upwards by increasing them with 10%.
+After that you should add a field that shows whether the student has passed or failed the exam
+(passed exam means 100 or more points at the exam). Finally you should filter out only the students
+that have passed the exam and print them out sorted alphabetically-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course grade scaling</title>
+</head>
+<body>
+<script>
+    var obj = [
+        {
+            'name' : 'Пешо',
+            'score' : 91
+        },
+        {
+            'name' : 'Лилия',
+            'score' : 290
+        },
+        {
+            'name' : 'Алекс',
+            'score' : 343
+        },
+        {
+            'name' : 'Габриела',
+            'score' : 400
+        },
+        {
+            'name' : 'Жичка',
+            'score' : 70
+        }
+    ];
+
+    // for (var i = 0; i < obj.length; i++) {
+    //     if (obj[i].score >= 100) {
+    //         obj[i]['hasPassed'] = true;
+    //     } else {
+    //         obj[i]['hasPassed'] = false;
+    //     }
+    // }
+
+    var jsonStr = JSON.stringify(obj);
+   // console.log(jsonStr);
+    var jsObj = JSON.parse(jsonStr);
+    //console.log(jsObj);
+
+
+    for (var i = 0; i < jsObj.length; i++) {
+        jsObj[i].score += jsObj[i].score * 10 /100;
+        if (jsObj[i].score >= 100) {
+            jsObj[i]['hasPassed'] = true;
+        } else {
+            jsObj[i]['hasPassed'] = false;
+        }
+    }
+
+
+
+    ////console.log('-------------------------');
+  // for (var i = 0; i < obj.length; i++) {
+  //     console.log(obj[i].name + " -> " + obj[i].score);
+  // }
+
+   // console.log('-------------------------');
+
+    function compare(a, b){
+        if(a.name > b.name){
+            return 1;
+        }
+        if(a.name < b.name) {
+            return -1;
+        }
+
+        return 0;
+    };
+
+    var result = new Array;
+    for (var i = 0; i < jsObj.length; i++) {
+        if (jsObj[i].hasPassed === true && jsObj[i] !== null ) {
+            result[i] = jsObj[i];
+        }
+    }
+
+
+    result.sort(compare);
+    console.log(JSON.stringify(result));
+
+    // obj[1].score = 20;
+    //  console.log(obj[1].score);
+    // console.log(jsObj[1].score);
+
+</script>
+</body>
+</html>

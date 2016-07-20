@@ -1,0 +1,33 @@
+<!--Problem 2.	Score modification
+You are given an array of numbers. Your tasks are to first filter out all valid exam scores
+(between 0 and 400) and afterwards scale them downwards by removing 20% out of each score.
+Finally you should print out the changed scores sorted in ascending order.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Score modification</title>
+</head>
+<body>
+<script>
+    function scoreModification(arr){
+        var filter = arr.filter(function (num) {
+            return Number(num) >= 0 && Number(num) <= 400;
+        });
+
+        for(var i = 0; i < filter.length; i++){
+            filter[i] -= filter[i] * 20 / 100;
+        }
+
+        filter.sort(function (a, b) {
+          return a > b;
+        });
+
+       console.log("[" + filter.join(", ") + ']');
+    }
+
+  scoreModification([200, 120, 23, 67, 350, 420, 170, 212, 401, 615, -1]);
+</script>
+</body>
+</html>

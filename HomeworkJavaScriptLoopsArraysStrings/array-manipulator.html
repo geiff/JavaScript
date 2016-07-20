@@ -1,0 +1,66 @@
+<!--Problem 1.	Array manipulator
+  You are given an array of objects. Your task is to write a
+  code that filters out the numbers of that array (removes all non-number objects).
+  Then you should: 1. Find the Min number, 2. Find the Max number, 3. Find the most frequent number.
+  Finally you should print out the numbers you have found and the filtered array sorted in descending order.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function manipulatorArr(arr){
+
+        var filterde = arr.filter(function (num) {
+            return Number(num) || Number(num) === 0;
+        });
+
+        var minNum = Number.MAX_VALUE;
+        var maxNum = Number.MIN_VALUE;
+
+        var count = 1;
+        var maxCount = 0;
+        var maxCountElement = Number.MAX_VALUE;
+
+        filterde.forEach(function (element) {
+            if(element < minNum){
+                minNum = element;
+            }
+            if(element > maxNum){
+                maxNum = element;
+            }
+        });
+
+        for (var i = 0; i < filterde.length; i++){
+            for (var j = i + 1; j < filterde.length; j++){
+                if(Number(filterde[i]) === Number(filterde[j])){
+                    count++;
+                }
+            }
+
+            if(count > maxCount){
+                maxCount = count;
+                maxCountElement = Number(filterde[i]);
+                count=1;
+            }
+        }
+
+        filterde.sort(function (a, b) {
+            return a < b;
+        });
+
+        console.log("Min number: " + minNum);
+        console.log("Max number: " + maxNum);
+        console.log("Most frequent number: " + maxCountElement);
+        console.log("[" + filterde.join(", ") + "]");
+    }
+
+
+    manipulatorArr(["Pesho", 2, "Gosho", 12, 2, "true", 9, undefined, 0, "Penka", { bunniesCount : 10}, [10, 20, 30, 40]]);
+
+</script>
+</body>
+</html>
